@@ -1,0 +1,12 @@
+<h1>Product Info:</h1>
+<h2>Item: <%= @product.name %></h2>
+<h3>Price: <%= @product.price %></h3>
+<img src = "<%= @product.image %>", height = "300 px">
+<h3>Description: <%= @product.description %></h3>
+<p><button type="button" class="btn btn-default">
+  <span class="glyphicon glyphicon-arrow-left"></span><a href="/products"> Back to All Flutes</a></button></p>
+<p><button type="button" class="btn btn-default">
+  <span class="glyphicon glyphicon-wrench"></span>
+  <%= link_to " Edit this product", "/products/#{@product.id}/edit" %></button></p>
+<p><button type="button" class="btn btn-default">
+  <span class="glyphicon glyphicon-remove-circle"></span><%= link_to " Delete this product", "/products/#{@product.id}", method: :delete %></button></p>
