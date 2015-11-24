@@ -3,12 +3,34 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @all_products = Product.all
+    sort_by = params[:sort_by]
+    sort_order = params[:sort_order]
+
+    if sort_by && sort_order
+      @all_products = Product.order(sort_by => sort_order)
+    else
+      @all_products = Product.all
+    end
+
+    discount_threshold = params[:discount]
+    if discount_threshold
+      @all_products = Product.where("price < ?", discount_threshold)
+    end
+
+    search_term = params[:search]
+    if search_term
+      @all_products = Product.where("name LIKE ?", "%#{search_term}%")
+    end
+
   end
 
   def show
     product_id = params[:id]
-    @product = Product.find_by(id: product_id)
+    if product_id == "random"
+      @product = Product.find_by(id: rand(1..Product.count))
+    else
+      @product = Product.find_by(id: product_id)
+    end
   end
 
   def new
@@ -21,6 +43,8 @@ class ProductsController < ApplicationController
       image: params[:image],
       description: params[:description]
       )
+    flash[:success] = "Success! You've created this product!"
+    redirect_to "/products/#{@new_product.id}"
   end
 
   def edit

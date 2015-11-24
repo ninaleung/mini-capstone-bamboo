@@ -1,9 +1,44 @@
 body {
   font-family: Optima,Segoe,"Segoe UI",Candara,Calibri,Arial,sans-serif;
-  color: white;
+  color: darkseagreen;
   background: url("wood_1.png")
 }
 
-h1 {
+h1#title {
   font-family: Georgia,Times,"Times New Roman",serif;
+  color: white;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+img {
+  border: 2px solid white;
+}
+
+#sale {
+  color: yellow;
+}
+
+.well {
+  background: darkseagreen;
+  color: black;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.btn-block {
+  background: darkseagreen;
+}
+
+.btn-block:hover {
+  background: darkseagreen;
 }
