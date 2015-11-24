@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+  belongs_to :supplier
+  has_many :images
 
   def readable_updated_at
     updated_at.strftime("%A, %d %b %Y at %l:%M %p")
