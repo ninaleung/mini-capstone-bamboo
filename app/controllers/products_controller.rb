@@ -40,8 +40,12 @@ class ProductsController < ApplicationController
     @new_product = Product.create(
       name: params[:name],
       price: params[:price],
-      image: params[:image],
-      description: params[:description]
+      description: params[:description],
+      supplier_id: params[:supplier_id]
+      )
+    @new_image = Image.create(
+      url: params[:image],
+      product_id: @new_product.id
       )
     flash[:success] = "Success! You've created this product!"
     redirect_to "/products/#{@new_product.id}"
@@ -56,8 +60,10 @@ class ProductsController < ApplicationController
     @product.update(
       name: params[:name],
       price: params[:price],
-      image: params[:image],
       description: params[:description]
+      )
+    @new_image = Image.first.update(
+      url: params[:image]
       )
     flash[:success] = "Success! You've updated this product!"
     redirect_to "/products/#{@product.id}"

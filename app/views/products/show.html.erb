@@ -16,11 +16,11 @@
     <% @product.images.each do |image| %>
       <% if image == @product.images[0] %>
         <div class="item active">
-        <img src = "<%= image.url %>" >
+        <img src = "<%= image.url %>" class="img-rounded" >
         </div>
       <% else %>
         <div class="item">
-        <img src = "<%= image.url %>" >
+        <img src = "<%= image.url %>" class="img-rounded" >
         </div>
       <% end %>
     <% end %>
@@ -51,9 +51,9 @@
 <h4>Total: $<%= @product.total %></h4>
 <h4>Supplier: <%= @product.supplier.name %></h4>
 <h3><em>Description: </em><%= @product.description %></h3>
+<br />
 <p><button type="button" class="btn btn-default btn-block">
   <span class="glyphicon glyphicon-arrow-left"></span><a href="/products"> Back to All Flutes</a></button></p>
-<br />
 <p><button type="button" class="btn btn-default btn-block">
   <span class="glyphicon glyphicon-wrench"></span>
   <%= link_to " Edit this product", "/products/#{@product.id}/edit" %></button></p>
