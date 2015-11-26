@@ -19,5 +19,7 @@ class OrdersController < ApplicationController
   def show
     order_id = params[:id]
     @order = Order.find_by(id: order_id)
+    @product_purchased = Product.find_by(id: @order.product_id)
+    
   end
 end

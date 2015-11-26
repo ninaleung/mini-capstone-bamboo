@@ -1,3 +1,11 @@
 <h1>Your Order:</h1>
 <h2>Order ID: <%= @order.id %></h2>
 <h3>Quantity: <%= @order.quantity %></h3>
+<h3>Subtotal: $<%= @order.subtotal %></h3>
+<h3>Tax: $<%= @order.tax %></h3>
+<h3>Total: $<%= @order.total %></h3>
+<h3>Your email: <%= current_user.email %></h3>
+<br />
+<h2>Product Name: <%= @product_purchased.name %></h2>
+<img src="<%= @product_purchased.images.first.url %>" alt="Bamboo Flute!">
+<h3>Order Time: <%= @order.created_at.strftime("%A, %b %d %Y  at %l:%M %p") %></h3>
