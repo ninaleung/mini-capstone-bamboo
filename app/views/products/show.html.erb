@@ -43,21 +43,30 @@
   </div>
 
 <div class="col-lg-3">
-<h1><%= @product.name %></h1>
-<%= @product.in_stock? %>
-<h3 id="sale"><%= @product.discount_sale %></h3>
-<h3><em>Price: </em>$<%= @product.price %></h3>
-<h4>Tax: $<%= @product.tax%></h4>
-<h4>Total: $<%= @product.total %></h4>
-<h4>Supplier: <%= @product.supplier.name %></h4>
-<h3><em>Description: </em><%= @product.description %></h3>
-<br />
-<p><button type="button" class="btn btn-default btn-block">
-  <span class="glyphicon glyphicon-arrow-left"></span><a href="/products"> Back to All Flutes</a></button></p>
-<p><button type="button" class="btn btn-default btn-block">
-  <span class="glyphicon glyphicon-wrench"></span>
-  <%= link_to " Edit this product", "/products/#{@product.id}/edit" %></button></p>
-<p><button type="button" class="btn btn-default btn-block">
-  <span class="glyphicon glyphicon-remove-circle"></span><%= link_to " Delete this product", "/products/#{@product.id}", method: :delete %></button></p>
-</div>
+  <h1><%= @product.name %></h1>
+  <%= @product.in_stock? %>
+  <h3 id="sale"><%= @product.discount_sale %></h3>
+  <h3><em>Price: </em>$<%= @product.price %></h3>
+  <h4>Tax: $<%= @product.tax%></h4>
+  <h4>Total: $<%= @product.total %></h4>
+  <h4>Supplier: <%= @product.supplier.name %></h4>
+  <h3><em>Description: </em><%= @product.description %></h3>
+  <%= form_tag '/orders', method: :post do %>
+  <div class = "form-group">
+    <%= label_tag :quantity %>
+    <%= text_field_tag :quantity, nil, class: "form-control" %>
+  </div>
+  <div>
+    <%= button_tag 'Buy Now!', class: "btn btn-default" %>
+  </div>
+  <% end %>
+  <br />
+  <p><button type="button" class="btn btn-default btn-block">
+    <span class="glyphicon glyphicon-arrow-left"></span><a href="/products"> Back to All Flutes</a></button></p>
+  <p><button type="button" class="btn btn-default btn-block">
+    <span class="glyphicon glyphicon-wrench"></span>
+    <%= link_to " Edit this product", "/products/#{@product.id}/edit" %></button></p>
+  <p><button type="button" class="btn btn-default btn-block">
+    <span class="glyphicon glyphicon-remove-circle"></span><%= link_to " Delete this product", "/products/#{@product.id}", method: :delete %></button></p>
+
 </div>
