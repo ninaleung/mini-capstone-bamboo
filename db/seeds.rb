@@ -1,6 +1,6 @@
 # User.create!([
 #   {email: "nleung320+test@gmail.com", encrypted_password: "$2a$10$hlrUEvryJy0HE9TYTYWH5.88Wsa.HOLIOFP6yepgBUnNQpg85cu9a", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-11-26 00:46:03", last_sign_in_at: "2015-11-26 00:46:03", current_sign_in_ip: "::1", last_sign_in_ip: "::1"}
-])
+# ])
 Image.create!([
   {url: "http://www.kerryleung.com/uploads/4/9/7/5/4975444/s843155839916613551_p4_i1_w640.jpeg", product_id: 1},
   {url: "http://www.kerryleung.com/uploads/4/9/7/5/4975444/s843155839916613551_p5_i1_w640.jpeg", product_id: 2},
