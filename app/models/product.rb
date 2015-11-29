@@ -2,6 +2,8 @@ class Product < ActiveRecord::Base
   belongs_to :supplier
   has_many :images
   has_many :orders
+  has_many :categorized_products
+  has_many :categories, through: :categorized_products
 
   def readable_updated_at
     updated_at.strftime("%A, %d %b %Y at %l:%M %p")

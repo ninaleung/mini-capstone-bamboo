@@ -22,6 +22,11 @@ class ProductsController < ApplicationController
       @all_products = Product.where("name LIKE ?", "%#{search_term}%")
     end
 
+    category_name = params[:category]
+    if category_name
+      @all_products = Category.find_by(name: category_name).products
+    end
+
   end
 
   def show

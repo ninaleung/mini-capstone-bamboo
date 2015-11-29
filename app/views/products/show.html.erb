@@ -35,6 +35,12 @@
           <span class="sr-only">Next</span>
         </a>
     </div>
+    <h3>Belongs to categories:</h3>
+    <ul>
+    <% @product.categories.each do |category| %>
+    <li><a href="/products?category=<%= category.name %>"><%= category.name %></a></li>
+    <% end %>
+    </ul>
   </div>
 
   <div class="col-lg-3">

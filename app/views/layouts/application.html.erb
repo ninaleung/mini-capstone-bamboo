@@ -31,9 +31,11 @@
           <ul class="dropdown-menu">
             <li><a href="/products?sort_by=price&sort_order=asc">Price low to high</a></li>
             <li><a href="/products?sort_by=price&sort_order=desc">Price high to low</a></li>
-            <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <li>Categories:</li>
+            <% Category.all.each do |category| %>
+            <li><a href="/products?category=<%= category.name %>"><%= category.name %></a></li>
+            <% end %>
             <li role="separator" class="divider"></li>
             <li><a href="#">One more separated link</a></li>
           </ul>
