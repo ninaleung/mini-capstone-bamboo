@@ -1,1 +1,37 @@
-index.html.erb
+<h1>Your Cart:</h1>
+
+<div class="container">
+ <table class="table table-bordered">
+    <thead>
+     <tr>
+       <th>Image</th>
+       <th>Product</th>
+       <th>Order Quantity</th>
+       <th>Product Price</th>
+       <th>Edit</th>
+     </tr>
+   </thead>
+   <tbody>
+   <% @cart_items.each do |cart_item| %>
+     <tr>
+         <td>
+             <img class="media-object cart-show" src = <%= cart_item.product.images.first.url %> alt= <%= cart_item.product.name%> >
+         </td>
+         <td>
+             <p><%= cart_item.product.name %></p>
+         </td>
+         <td>
+             <p><%= cart_item.quantity %></p>
+         </td>
+         <td>
+             <p>$<%= cart_item.product.price %></p>
+         </td>
+         <td>
+           <a href="#">Remove</a>
+         </td>
+     </tr>
+     <% end %>
+   </tbody>
+ </table>
+
+</div>

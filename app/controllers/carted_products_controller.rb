@@ -12,6 +12,6 @@ class CartedProductsController < ApplicationController
   end
 
   def index
-    @carted_products = 
+    @cart_items = current_user.carted_products.where("status LIKE ?", "carted")
   end
 end
