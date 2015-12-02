@@ -1,11 +1,33 @@
 <h1>Your Order:</h1>
-<h2>Order ID: <%= @order.id %></h2>
-<h3>Quantity: <%= @order.quantity %></h3>
-<h3>Subtotal: $<%= @order.subtotal %></h3>
-<h3>Tax: $<%= @order.tax %></h3>
-<h3>Total: $<%= @order.total %></h3>
-<h3>Your email: <%= current_user.email %></h3>
-<br />
-<h2>Product Name: <%= @product_purchased.name %></h2>
-<img src="<%= @product_purchased.images.first.url %>" alt="Bamboo Flute!">
-<h3>Order Time: <%= @order.created_at.strftime("%A, %b %d %Y  at %l:%M %p") %></h3>
+    
+<div class="container">
+ <table class="table table-bordered">
+    <thead>
+     <tr>
+       <th>Image</th>
+       <th>Product</th>
+       <th>Order Quantity</th>
+       <th>Product Price</th>
+     </tr>
+   </thead>
+   <tbody>
+   <% @purchased_items.each do |cart_item| %>
+     <tr>
+         <td>
+             <img class="media-object cart-show" src = <%= cart_item.product.images.first.url %> alt= <%= cart_item.product.name%> >
+         </td>
+         <td>
+             <p><%= cart_item.product.name %></p>
+         </td>
+         <td>
+             <p><%= cart_item.quantity %></p>
+         </td>
+         <td>
+             <p>$<%= cart_item.product.price %></p>
+         </td>
+     </tr>
+     <% end %>
+   </tbody>
+ </table>
+
+</div>

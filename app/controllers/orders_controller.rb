@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
 
     tax_calc = (subtotal_calc * 0.1025).round(2)
 
-    new_order = Order.create(
+    @new_order = Order.create(
       user_id: current_user.id,
       subtotal: subtotal_calc,
       tax: tax_calc,
@@ -43,8 +43,19 @@ class OrdersController < ApplicationController
     cart_items.each do |item|
       item.update(
         status: "purchased", 
-        order_id: new_order.id
+        order_id: @new_order.id
         )
+      flash[:success] = "Success! You've successfully placed an order!"
+      redirect_to "/orders/#{@new_order.id}"
     end
   end
+
+  def show
+    order_id = params[:id]
+    # @order = Order.find_by(id: order_id)
+    # @products_purchased = carted_products.products
+    # Product.find_by(id: @order.product_id)
+    @purchased_items = CartedProduct.where(order_id: order_id)
+  end
+
 end
