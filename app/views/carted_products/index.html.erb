@@ -1,5 +1,12 @@
 <h1>Your Cart:</h1>
-
+    <%= form_tag '/orders', method: :post do %>
+      <div class = "form-group">
+        <%= hidden_field_tag(:user_id, value = current_user.id) %>
+      </div>
+      <div>
+        <%= button_tag 'Buy Now!', class: "btn btn-default" %>
+      </div>
+    <% end %>
 <div class="container">
  <table class="table table-bordered">
     <thead>

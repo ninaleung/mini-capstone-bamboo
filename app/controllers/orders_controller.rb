@@ -22,4 +22,29 @@ class OrdersController < ApplicationController
   #   @product_purchased = Product.find_by(id: @order.product_id)
     
   # end
+
+  def create
+    cart_items = current_user.carted_products.where("status LIKE ?", "carted")
+
+    subtotal_calc = 0
+    cart_items.each do |item|
+      subtotal_calc += (item.product.price * item.quantity)
+    end
+
+    tax_calc = (subtotal_calc * 0.1025).round(2)
+
+    new_order = Order.create(
+      user_id: current_user.id,
+      subtotal: subtotal_calc,
+      tax: tax_calc,
+      total: subtotal_calc + tax_calc,
+      )
+
+    cart_items.each do |item|
+      item.update(
+        status: "purchased", 
+        order_id: new_order.id
+        )
+    end
+  end
 end
