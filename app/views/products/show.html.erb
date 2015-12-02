@@ -53,7 +53,7 @@
     <h4>Supplier: <%= @product.supplier.name %></h4>
     <h3><em>Description: </em><%= @product.description %></h3>
 
-    <%= form_tag '/orders', method: :post do %>
+    <%= form_tag '/carted_products', method: :post do %>
     <div class = "form-group">
       <%= label_tag :quantity %>
       <%= text_field_tag :quantity, nil, class: "form-control" %>
@@ -62,7 +62,7 @@
       <%= hidden_field_tag(:product_id, value = @product.id) %>
     </div>
     <div>
-      <%= button_tag 'Buy Now!', class: "btn btn-default" %>
+      <%= button_tag 'Add to Cart', class: "btn btn-default" %>
     </div>
     <% end %>
 
